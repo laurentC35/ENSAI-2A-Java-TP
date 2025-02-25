@@ -1,6 +1,9 @@
+package fr.ensai.tp1;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
@@ -8,7 +11,7 @@ import java.util.Scanner;
 
 public class Login {
     public static void main(String[] args) {
-        HashMap<String, String> userDatabase = loadUserDatabase("./data/awesome_passwords.csv");
+        HashMap<String, String> userDatabase = loadUserDatabase("data/awesome_passwords.csv");
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -44,7 +47,8 @@ public class Login {
 
     public static HashMap<String, String> loadUserDatabase(String filename) {
         HashMap<String, String> userDatabase = new HashMap<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+        URL url = Login.class.getClassLoader().getResource(filename);
+        try (BufferedReader br = new BufferedReader(new FileReader(url.getFile()))) {
             String line;
             br.readLine(); // Skip header
             while ((line = br.readLine()) != null) {

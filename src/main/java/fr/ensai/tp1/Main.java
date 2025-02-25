@@ -1,3 +1,5 @@
+package fr.ensai.tp1;
+
 import java.security.SecureRandom;
 
 public class Main {

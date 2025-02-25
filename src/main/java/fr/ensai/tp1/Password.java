@@ -1,3 +1,5 @@
+package fr.ensai.tp1;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
